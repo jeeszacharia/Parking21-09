@@ -31,7 +31,12 @@ public class ConnectionManager {
 		
         try{			
         	
-        	
+        	try {
+    			Class.forName("com.mysql.jdbc.Driver");
+    		} catch (ClassNotFoundException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}	
                 
 		conn= DriverManager.getConnection(DBURL, USERID, PASSWORD);
         }catch(SQLException e){

@@ -45,18 +45,19 @@ public class Login extends HttpServlet {
 		
 		String varUserName=request.getParameter("uname");
 		String varPassword=request.getParameter("password");
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("username", varUserName);
 		
 		//setting the username value to getterSetter methods to authenticate from DBManager.check user function.
 		
 		objgetset.setUserName(varUserName);
 		objgetset.setPassowrd(varPassword);
 		status= DBManager.checklogin(objgetset);
+		
 		if(status==true){
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("username", varUserName);
-			
+
+						
 			request.getRequestDispatcher("/HomePage.jsp").forward(request, response);	
 			
 		}else{

@@ -110,6 +110,7 @@ public static int issueTicket(GetterSetter sets) throws ParseException {
 //********** Login Validation Starts**************
 
 public static boolean checklogin(GetterSetter sets){
+	
 	Connection conn= ConnectionManager.getInstance().getConnection();
 	ResultSet myresultset;
 	boolean loginSuccess = false;
@@ -125,11 +126,15 @@ public static boolean checklogin(GetterSetter sets){
 		}
 		
 		String sqlQuery=("SELECT *FROM parking.registration where Name=? and password=?");
-
+		
+		
+		
 		PreparedStatement prepstmt = conn.prepareStatement(sqlQuery);
-				
+		
+		
 		prepstmt.setString(1, sets.getUserName());
-		prepstmt.setString(2, sets.getPassowrd());
+		prepstmt.setString(2, sets.getPassowrd());		
+	
 		
 		myresultset=prepstmt.executeQuery();
 		if(myresultset.next()){
