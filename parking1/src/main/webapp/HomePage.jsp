@@ -9,7 +9,7 @@
 
 
 
-<% int value = (Integer) request.getAttribute("timeout");%>
+<% int value = (Integer)request.getAttribute("timeout"); %>
 
 <p id="demo"></p>
 
@@ -17,13 +17,14 @@
 //Place here the total of seconds you receive on your JSP code. ie: var initialTime = <? echo $remaining; ?>;
 
 
-var initialTime = '${value}';
+var initialTime =0
+initialTime='${value}';
 
 var seconds = initialTime;
 function timer() {
     var days = Math.floor(seconds/24/60/60);
-    var hoursLeft = Math.floor((seconds) - (days*86400));
-    var hours = Math.floor(hoursLeft/3600);
+    var hoursLeft   = Math.floor((seconds) - (days*86400));
+    var hours       = Math.floor(hoursLeft/3600);
     var minutesLeft = Math.floor((hoursLeft) - (hours*3600));
     var minutes     = Math.floor(minutesLeft/60);
     var remainingSeconds = seconds % 60;
@@ -35,7 +36,7 @@ function timer() {
     document.getElementById('demo').innerHTML = days + "day " + hours + "hrs " + minutes + "minute " + remainingSeconds+ "seconds";
     if (seconds == 900) {
         //clearInterval(countdownTimer);
-        window.alert("You have only 15 Seconds Leftout!You need to renew your Ticket ");
+        window.alert("You have only 15 Minutes Leftout!You need to renew your Ticket ");
         //document.getElementById('demo').innerHTML = "Completed";
     }if(seconds == 0){
     	window.alert("Your Time is UP!!!!!!!!!!!! ");
@@ -52,6 +53,8 @@ var countdownTimer = setInterval('timer()', 1000);
 </head>
 
 <body>
+
+
      
    <c:forEach items="${arr}" var="arr">
     <tr>
@@ -60,6 +63,7 @@ var countdownTimer = setInterval('timer()', 1000);
      </tr>       
     </c:forEach>
   
+
 
 
 <%
@@ -134,7 +138,8 @@ if(session.getAttribute("username")==null){
           <td>RegistrationID </td>
           <td><input type="text" name="RegID"> </td>
      </tr>
-                  
+     
+              
            
            </table>
 </form>

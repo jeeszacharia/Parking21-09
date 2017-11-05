@@ -47,15 +47,13 @@ public class GetTicket extends HttpServlet {
 		ParkingTimeCalculation objtimeCal=new ParkingTimeCalculation();
 		
 		//Getting the field value from jsp page
-		long varMinutes = Long.parseLong(request.getParameter("Minute"));
+		int varMinutes = Integer.parseInt(request.getParameter("Minute"));
 		int varRegID=Integer.parseInt(request.getParameter("RegID"));
 		//setting both values to getter and setter class to retrieve from ParkingTimeClass
 		
 		       objgetset.setRegID(varRegID);
               objgetset.setUserRequestMinute(varMinutes);
-			
-
-		objtimeCal.CalculateTime(objgetset);
+       	objtimeCal.CalculateTime(objgetset);
 		objtimeCal.calStartTime();
 		objtimeCal.calEndTime();
 		objtimeCal.calParkingFee();
@@ -70,8 +68,8 @@ public class GetTicket extends HttpServlet {
 			    		
 		}else{
 			
-			long timeout=varMinutes*60; // Setting Timer to display Alert
-			 request.setAttribute("value", timeout);//Setting timeout value for the counter in ParkingDetails.jsp
+			int  timeout=varMinutes*60; // Setting Timer to display Alert
+			 request.setAttribute("timeout", timeout);//Setting timeout value for the counter in HomePage.jsp
 			 
 			 ArrayList arr=DBManager.getTicketDetails(objgetset);
 			 
@@ -88,13 +86,6 @@ public class GetTicket extends HttpServlet {
 		}
 	   	   
 	   	
-		
-				
-//		// After inserting the value redirecting to home page again.
-//		String message = "Ticket Issue Successful";
-//		request.setAttribute("", message);
-//		request.getRequestDispatcher("/HomePage.jsp").forward(request, response);
-		
 		
 	}
 

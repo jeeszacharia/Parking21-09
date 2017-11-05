@@ -56,8 +56,8 @@ public class Registration extends HttpServlet {
 		int value=DBManager.insertNewuser(objgetset);
 			
 			if(value==1){
-				//String message = "Registration Successful";
-				//request.setAttribute("", message);
+				String message = "Registration Successful";
+				request.setAttribute("", message);
 				request.getRequestDispatcher("/Login.jsp").forward(request, response);
 					
 			}else{

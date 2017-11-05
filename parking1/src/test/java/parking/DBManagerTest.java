@@ -143,7 +143,7 @@ public class DBManagerTest extends TestCase {
 	public void testChecklogin() {
 
 		
-obj.setUserName("Nivya");
+obj.setUserName("Jees");
 obj.setPassowrd("abc");
 
 loginactual= DBManager.checklogin(obj);
